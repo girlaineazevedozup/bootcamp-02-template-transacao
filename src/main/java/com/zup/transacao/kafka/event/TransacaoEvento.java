@@ -16,7 +16,7 @@ public class TransacaoEvento {
     private BigDecimal valor;
     private EstabelecimentoEvento estabelecimento;
     private CartaoEvento cartao;
-    private LocalDateTime evetivadaEm;
+    private LocalDateTime efetivadaEm;
 
     public String getId() {
         return id;
@@ -50,12 +50,12 @@ public class TransacaoEvento {
         this.cartao = cartao;
     }
 
-    public LocalDateTime getEvetivadaEm() {
-        return evetivadaEm;
+    public LocalDateTime getEfetivadaEm() {
+        return efetivadaEm;
     }
 
-    public void setEvetivadaEm(LocalDateTime evetivadaEm) {
-        this.evetivadaEm = evetivadaEm;
+    public void setEfetivadaEm(LocalDateTime efetivadaEm) {
+        this.efetivadaEm = efetivadaEm;
     }
 
     public Transacao toModel(EstabelecimentoRepository estabelecimentoRepository,
@@ -70,11 +70,11 @@ public class TransacaoEvento {
 
         Optional<Cartao> cartaoOp = cartaoRepository.findByNumero(cartao.getId());
         Cartao cartaoModel;
-        if(estabelecimentoOp.isPresent())
+        if(cartaoOp.isPresent())
             cartaoModel = cartaoOp.get();
         else
             cartaoModel = cartaoRepository.save(cartao.toModel());
 
-        return new Transacao(id, valor, estabelecimentoModel, cartaoModel, evetivadaEm);
+        return new Transacao(id, valor, estabelecimentoModel, cartaoModel, efetivadaEm);
     }
 }

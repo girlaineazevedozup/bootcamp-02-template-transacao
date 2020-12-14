@@ -18,7 +18,7 @@ public class TransacaoResponse {
         this.valor = transacao.getValor();
         this.estabelecimento = new EstabelecimentoRequest(transacao.getEstabelecimento());
         this.cartao = new CartaoRequest(transacao.getCartao());
-        this.evetivadaEm = transacao.getEvetivadaEm();
+        this.evetivadaEm = transacao.getEfetivadaEm();
     }
 
     public String getId() {

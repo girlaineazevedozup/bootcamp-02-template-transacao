@@ -1,6 +1,7 @@
 package com.zup.transacao.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.PastOrPresent;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -21,19 +22,19 @@ public class Transacao {
     @ManyToOne
     private Cartao cartao;
 
-    private LocalDateTime evetivadaEm;
+    private LocalDateTime efetivadaEm;
 
     @Deprecated
     public Transacao(){
     }
 
     public Transacao(String numero, BigDecimal valor, Estabelecimento estabelecimento,
-                     Cartao cartao, LocalDateTime evetivadaEm) {
+                     Cartao cartao, LocalDateTime efetivadaEm) {
         this.numero = numero;
         this.valor = valor;
         this.estabelecimento = estabelecimento;
         this.cartao = cartao;
-        this.evetivadaEm = evetivadaEm;
+        this.efetivadaEm = efetivadaEm;
     }
 
     public String getNumero() {
@@ -52,7 +53,7 @@ public class Transacao {
         return cartao;
     }
 
-    public LocalDateTime getEvetivadaEm() {
-        return evetivadaEm;
+    public LocalDateTime getEfetivadaEm() {
+        return efetivadaEm;
     }
 }

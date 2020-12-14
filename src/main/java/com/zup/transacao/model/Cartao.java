@@ -1,16 +1,17 @@
 package com.zup.transacao.model;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.UUID;
 
 @Entity
 public class Cartao {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private Long id;
+    @Type(type="uuid-char")
+    private UUID id = UUID.randomUUID();
 
     private String numero;
 
